@@ -69,6 +69,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cbproject.wsgi.application'
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+SESSION_COOKIE_SAMESITE = None
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

@@ -4,19 +4,27 @@ from django.urls import reverse
 from django.template import loader
 from django.http import Http404
 from .models import Question, Choice
+from django.contrib.auth.decorators import login_required
 
 #TODO
-
-#5 CB FLAWS
-#CSRF (in html) DONE
-#BROKEN ACCESS CONTROL
-    #take example from the exercise (login)
-#CRYPTOGRAPHIC FAILURE (save password without hashing)
-    #create login functionality
+#CRYPTOGRAPHIC FAILURE 
+#   save password without hashing
+    #"create user" functionality
+    #
 #INJECTION (SQL)
-    #add own quote page
-#VULNERABLE&OUTDATED COMPONENTS (add an old one)
+    #in the create user functionality
 
+#VULNERABLE&OUTDATED COMPONENTS 
+#   add an old library/extension?
+
+#DONE
+#CSRF 
+#   in html&settings.py
+#BROKEN ACCESS CONTROL 
+#   login required missing from many pages
+
+
+@login_required
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {
@@ -24,15 +32,17 @@ def index(request):
     }
     return render(request, 'quotes/index.html', context)
 
+#@login_required <- broken access control, add this to fix
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'quotes/detail.html', {'question': question})
 
+#@login_required <- broken access control, add this to fix
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'quotes/results.html', {'question': question})
     
-
+#@login_required <- broken access control, add this to fix
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
