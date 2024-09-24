@@ -5,6 +5,7 @@ from django.template import loader
 from django.http import Http404
 from .models import Question, Choice
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 #TODO
 #CRYPTOGRAPHIC FAILURE 
@@ -13,18 +14,23 @@ from django.contrib.auth.decorators import login_required
     #
 #INJECTION (SQL)
     #in the create user functionality
+    #add quote
+
 
 #VULNERABLE&OUTDATED COMPONENTS 
 #   add an old library/extension?
 
+#SECURITY MISCONFIGURATION
+#   link to admin page & password displayed
 #DONE
 #CSRF 
 #   in html&settings.py
-#BROKEN ACCESS CONTROL 
-#   login required missing from many pages
+#BROCEN ACCESS CONTROL
+#   easy admin password & access to admin functionality
 
 
 @login_required
+@csrf_exempt #remove this 
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {
@@ -33,16 +39,19 @@ def index(request):
     return render(request, 'quotes/index.html', context)
 
 #@login_required <- broken access control, add this to fix
+@csrf_exempt
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'quotes/detail.html', {'question': question})
 
 #@login_required <- broken access control, add this to fix
+@csrf_exempt
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'quotes/results.html', {'question': question})
     
 #@login_required <- broken access control, add this to fix
+@csrf_exempt
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:

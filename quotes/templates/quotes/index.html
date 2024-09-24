@@ -11,10 +11,10 @@
   </head>
   <body>
     <main>
-        <h1>Welcome VoteQuote!</h1>  
+        <h1>Welcome to VoteQuote!</h1>  
     </main>
     <script src="index.js"></script>
-    <p>Choose a quote to vote on.</p>
+    <p>Choose a quote to vote on!</p>
     {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
@@ -24,6 +24,12 @@
     {% else %}
     <p>No quotes are available.</p>
     {% endif %}
-
+    <form id="logout-form" method="post" action="/logout/">
+        <input type="hidden" name="csrfmiddlewaretoken" value="QNTqISYnYYJATO4KtEzj6WpRnYSbfnTqhWjDNf3C7S9ZIgpxHzyoiAdMEbxeZFin">
+        <button type="submit">Log out</button>
+    </form>
+    <!-- remove link to admin page and text that provides login information-->
+    <a href="admin">Admin</a>
+    <p style="color:white;">For developers: username: admin, password: cybersec1</p>
   </body>
 </html>

@@ -47,8 +47,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware'
 ]
-#Add 'django.middleware.csrf.CsrfViewMiddleware' to MIDDLEWARE, to include CSRF protection
+
 ROOT_URLCONF = 'cbproject.urls'
 
 TEMPLATES = [
