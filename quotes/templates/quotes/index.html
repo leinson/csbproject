@@ -9,17 +9,17 @@
   </head>
   <body>
     <main>
-        <h1>Welcome to VoteQuote!</h1>  
+        <h1>VoteQuote</h1>  
     </main>
     <p>Choose a quote to vote on!</p>
     {% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'quotes:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
+      <ul>
+      {% for question in latest_question_list %}
+          <li><a href="{% url 'quotes:detail' question.id %}">{{ question.question_text }}</a></li>
+      {% endfor %}
+      </ul>
     {% else %}
-    <p>No quotes are available.</p>
+      <p>No quotes are available.</p>
     {% endif %}
     <form id="logout-form" method="post" action="/logout/">
       {% csrf_token %}

@@ -1,19 +1,32 @@
-<h1>{{ question.question_text }}</h1>
 
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
-<h2>Other comments:</h2>
-<ul>
-    <!-- Remove |safe from the comment displaying line. Flaw: Injection (XSS)-->
-    {% for comment in comments %}
-        <li>{{ comment.comment_text|safe }}</li>
-        {% empty %}
-        <li>No one has given a comment, yet.</li>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VoteQuote</title>
+  </head>
+  <body>
+    <main>
+        <h1>VoteQuote</h1>  
+    </main>
+    <h2>{{ question.question_text }}</h2>
+    <ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
     {% endfor %}
-</ul>
-
-<a href="{% url 'quotes:detail' question.id %}">Vote again?</a>
-<a href="{% url 'quotes:index' %}">Front Page</a>
+    </ul>
+    <h3>Other comments:</h3>
+    <ul>
+        <!-- Remove |safe from the comment displaying line. Flaw: Injection (XSS)-->
+        {% for comment in comments %}
+            <li>{{ comment.comment_text|safe }}</li>
+            {% empty %}
+            <li>No one has given a comment, yet.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'quotes:detail' question.id %}">Vote again?</a>
+    <a href="{% url 'quotes:index' %}">Front Page</a>
+  </body>
+</html>
