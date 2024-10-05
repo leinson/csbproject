@@ -25,7 +25,8 @@
     <p>No quotes are available.</p>
     {% endif %}
     <form id="logout-form" method="post" action="/logout/">
-        <input type="hidden" name="csrfmiddlewaretoken" value="QNTqISYnYYJATO4KtEzj6WpRnYSbfnTqhWjDNf3C7S9ZIgpxHzyoiAdMEbxeZFin">
+      {% csrf_token %}
+        <input type="hidden">
         <button type="submit">Log out</button>
     </form>
     <!-- remove link to admin page and text that provides login information-->
