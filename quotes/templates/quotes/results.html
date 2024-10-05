@@ -7,8 +7,9 @@
 </ul>
 <h2>Other comments:</h2>
 <ul>
+    <!-- Remove |safe from the comment displaying line. Flaw: Injection (XSS)-->
     {% for comment in comments %}
-        <li>{{ comment.comment_text }}</li>
+        <li>{{ comment.comment_text|safe }}</li>
         {% empty %}
         <li>No one has given a comment, yet.</li>
     {% endfor %}
