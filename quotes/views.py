@@ -8,26 +8,18 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 #TODO
-#CRYPTOGRAPHIC FAILURE 
-#   save password without hashing
-    #"create user" functionality
-    #
-#INJECTION (SQL)
-    #in the create user functionality
-    #add quote
-
-
 #VULNERABLE&OUTDATED COMPONENTS 
-#   add an old library/extension?
+#   add an old library/extension? moment.js old version show comment date?
 
-#SECURITY MISCONFIGURATION
-#   link to admin page & password displayed
 #DONE
 #CSRF 
 #   in html&settings.py
 #BROCEN ACCESS CONTROL
-#   easy admin password & access to admin functionality
-
+#   login not required to all pages
+#INJECTION XSS
+#   raw HTML can be entered and executed through comment field
+#SECURITY MISCONFIGURATION
+#   link to admin page & password displayed
 
 @login_required
 @csrf_exempt #remove this 
