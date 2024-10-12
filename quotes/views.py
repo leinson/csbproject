@@ -1,8 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from django.template import loader
-from django.http import Http404
 from .models import Question, Choice, Comment
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt

@@ -8,22 +8,20 @@
   </head>
   <body>
     <main>
-        <h1>VoteQuote</h1>  
-        <h2>{{ question.question_text }}</h2>
+      <h1>VoteQuote</h1>  
+      <h2>{{ question.question_text }}</h2>
     </main>
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
     <form action="{% url 'quotes:vote' question.id %}" method="post">
-        {% csrf_token %}
-        {% for choice in question.choice_set.all %}
-            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-        {% endfor %}
-        <p>Other comments?</p>
-        <input type="text" id="comment" name="comment"><br>
-        <input type="submit" value="Vote">
+      {% csrf_token %}
+      {% for choice in question.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+      {% endfor %}
+      <p>Other comments?</p>
+      <input type="text" id="comment" name="comment"><br>
+      <input type="submit" value="Vote">
     </form>
-
     <a href="{% url 'quotes:index' %}">Front Page</a>
   </body>
 </html>
