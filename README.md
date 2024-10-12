@@ -5,7 +5,7 @@ This is an extremely simple app, that lets you vote on different quotes.
 The app was created as a cyber security project for Cyber Security Base, Project I. 
 It has many intended vulnerabilities and security issues – 
 please be mindful of this if you test or use the app. 
-The project is done with Python and Django.  
+The project is done with Python and Django's starter template.  
 
 ## Instructions 
 
