@@ -25,7 +25,11 @@ username: admin, password: cybersec1
 
 ### FLAW 1: CSRF, Cross Site Request Forgery 
 Link to vulnerability in OWASP: https://owasp.org/www-community/attacks/csrf  
-**Source link:**    
+**Source link:**   
+- https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/views.py#L10  
+- https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/views.py#L19  
+- https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/views.py#L25  
+- https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/views.py#L32  
 **Description of flaw:**   
 Protection against Cross Site Request Forgery (CSRF) is missing from the application. Django provides inbuilt CSRF-protection, but the developer has disabled this feature by adding @csrf_exempt as a decorator in front of the different page views. This makes the app vulnerable for CSRF-attacks.  
 
@@ -37,6 +41,9 @@ Remove all ``@csrf_exempt`` decorators from ``views.py`` to enable Django’s bu
 Link to vulnerability in OWASP: https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/ 
 
 **Source link:**    
+- https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/views.py#L7
+- https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/views.py#L48
+
 **Description of flaw:**  
 A component can bring in a security flaw to an app. I chose to add Jinja2 to the project, which is a templating engine. It is used in this project to render the free text comment. Other than being useless in this app, Jinja2 has known vulnerabilities in older versions – for example XSS and Denial of service (DoS). You should always be mindful of what packages and dependencies you install to a project, since the more of them you have, the greater is the risk of one being outdated or prone to a vulnerability. 
  
@@ -50,6 +57,10 @@ Link to vulnerability in OWASP: https://owasp.org/Top10/A01_2021-Broken_Access_C
 
 
 **Source link:**    
+- https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/views.py#L18
+- https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/views.py#L24
+- https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/views.py#L31
+
 
 **Description of flaw:**  
 The only page that requires the end-user to login is the front page of the app. If you enter the address by yourself to, for example, http://127.0.0.1:8000/1/vote/ , you will bypass the login to immediately be able to cast a vote. This is a security flaw of broken access control. The site’s access control is clearly broken, as a malicious user who is not logged in can view all pages meant only for logged in users, as well as cast votes! 
@@ -64,6 +75,7 @@ Link to vulnerability in OWASP:  https://owasp.org/Top10/A03_2021-Injection/
 
 
 **Source link:**   
+- https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/templates/quotes/results.html#L23
 
 **Description of flaw:**  
 An XSS flaw leaves the app vulnerable to malicious users, who can enter for example raw HTML to the page to be executed when other users use the app.  
@@ -79,6 +91,7 @@ Link to vulnerability in OWASP: https://owasp.org/Top10/A05_2021-Security_Miscon
 
  
 **Source link:**   
+- https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/templates/quotes/index.html#L29
 
 **Description of flaw:**  
 The admin username and password meant for development only are still shown on the page, only changed to a white color to not be obvious. There is also a link that guides users to the admin page. The admin password is the same as the test-user's password. These can be considered as security misconfigurations. There is no need for a straight link to the admin site from the front page for end users to access. The site has not been properly cleaned up from the development process, and since this admin account is still in use it provides an unnecessary and dangerous feature that a malicious user can cause huge damage through. 
