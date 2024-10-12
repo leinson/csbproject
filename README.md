@@ -92,7 +92,7 @@ Link to vulnerability in OWASP: https://owasp.org/Top10/A05_2021-Security_Miscon
  
 **Source link:**   
 - https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/templates/quotes/index.html#L29
-
+- https://github.com/leinson/csbproject/blob/a37ea35d09f9d9dbc4c3a45f91b379b5101ac75d/quotes/templates/quotes/index.html#L30
 **Description of flaw:**  
 The admin username and password meant for development only are still shown on the page, only changed to a white color to not be obvious. There is also a link that guides users to the admin page. The admin password is the same as the test-user's password. These can be considered as security misconfigurations. There is no need for a straight link to the admin site from the front page for end users to access. The site has not been properly cleaned up from the development process, and since this admin account is still in use it provides an unnecessary and dangerous feature that a malicious user can cause huge damage through. 
 
