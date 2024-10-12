@@ -11,7 +11,7 @@ The project is done with Python and Django.
 
 Download the project from GitHub in a way that suits you.  
 
-Navigate in the terminal to the outmost folder ``/cbproject``. 
+Navigate in the terminal to the outmost folder ``/csbproject``. 
 
 **Run following commands** 
 ``pip install Jinja2==3.0.0`` 
